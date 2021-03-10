@@ -2,6 +2,7 @@
 logs
 *.log
 *.debug
+.idea
 
 # Runtime data
 *.pid

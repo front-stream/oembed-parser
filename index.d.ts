@@ -9,6 +9,8 @@ export function extract(url: string, params?: any): Promise<OembedData>;
 
 export function hasProvider(url: string): boolean;
 
+export function setFacebookAccessToken(token: string): void
+
 export function setProviderList(providers: Provider[]): void
 
 export interface Endpoint {
@@ -17,7 +19,7 @@ export interface Endpoint {
     formats?: string[]; // "json" "xml"
     discovery?: boolean;
 }
-  
+
 export interface Provider {
     "provider_name": string;
     "provider_url": string;
@@ -27,6 +29,9 @@ export interface Provider {
  * Basic data structure of every oembed response see https://oembed.com/
  */
 export interface OembedData {
+
+    html : string;
+
     type: 'rich' | 'video' | 'photo' | 'link';
     version: string;
     /** A text title, describing the resource. */

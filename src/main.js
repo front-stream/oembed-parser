@@ -9,6 +9,7 @@ const {
 
 const defaultProviderList = require('./utils/providers.json');
 let providers = providersFromList(defaultProviderList);
+let facebookAccessToken = '365101066946402|a56861eb5b787f9e9a18e4e09ea5c873';
 
 const extract = async (url, params = {}) => {
   if (!isValidURL(url)) {
@@ -18,7 +19,8 @@ const extract = async (url, params = {}) => {
   if (!p) {
     throw new Error(`No provider found with given url "${url}"`);
   }
-  const data = await fetchEmbed(url, p, params);
+
+  const data = await fetchEmbed(url, p, params, facebookAccessToken);
   return data;
 };
 
@@ -30,8 +32,13 @@ const setProviderList = (list) => {
   providers = providersFromList(list);
 };
 
+const setFacebookAccessToken = (token) => {
+  facebookAccessToken = token;
+}
+
 module.exports = {
   extract,
   hasProvider,
   setProviderList,
+  setFacebookAccessToken
 };
