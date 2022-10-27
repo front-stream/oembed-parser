@@ -7,6 +7,7 @@ import { isValid as isValidURL } from './utils/linker.js'
 import fetchEmbed from './utils/fetchEmbed.js'
 
 import { getEndpoint } from './utils/provider.js'
+import { setFacebookCredentials } from './utils/fetchEmbed.js'
 
 export const extract = async (url, params = {}, options = {}) => {
   if (!isValidURL(url)) {
@@ -26,3 +27,7 @@ export {
   has as hasProvider,
   set as setProviderList
 } from './utils/provider.js'
+
+export {
+  setFacebookCredentials
+} from './utils/fetchEmbed.js'

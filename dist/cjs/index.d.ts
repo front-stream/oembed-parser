@@ -154,3 +154,5 @@ export function hasProvider(url: string): boolean
 export function findProvider(url: string): FindProviderResult
 
 export function setProviderList(providers: Provider[]): void
+
+export function setFacebookCredentials(app_id : string, client_token: string): void

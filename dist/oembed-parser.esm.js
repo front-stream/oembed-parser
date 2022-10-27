@@ -1,4 +1,4 @@
-// oembed-parser@3.1.3, by @ndaidong - built with esbuild at 2022-10-26T05:04:53.355Z - published under MIT license
+// oembed-parser@3.1.3, by @ndaidong - built with esbuild at 2022-10-27T12:39:06.601Z - published under MIT license
 
 // src/utils/linker.js
 var isValid = (url = "") => {
@@ -49,13 +49,21 @@ var retrieve_default = async (url, options = {}) => {
 };
 
 // src/utils/fetchEmbed.js
+var env = process.env || {};
+var store = {
+  facebook_app_id: env.FACEBOOK_APP_ID || "",
+  facebook_client_token: env.FACEBOOK_CLIENT_TOKEN || ""
+};
+var setFacebookCredentials = (app_id, client_token) => {
+  store.facebook_app_id = app_id;
+  store.facebook_client_token = client_token;
+};
 var isFacebookGraphDependent = (url) => {
   return getDomain(url) === "graph.facebook.com";
 };
 var getFacebookGraphToken = () => {
-  const env = process.env || {};
-  const appId = env.FACEBOOK_APP_ID;
-  const clientToken = env.FACEBOOK_CLIENT_TOKEN;
+  const appId = store.facebook_app_id;
+  const clientToken = store.facebook_client_token;
   return `${appId}|${clientToken}`;
 };
 var fetchEmbed_default = async (url, params = {}, endpoint = "", options = {}) => {
@@ -2152,15 +2160,15 @@ var providersFromList = (providers2 = []) => {
     };
   });
 };
-var store = {
+var store2 = {
   providers: providersFromList(providers)
 };
 var get = () => {
-  return [...store.providers];
+  return [...store2.providers];
 };
 var set = (providers2 = []) => {
-  store.providers = providersFromList(simplify(providers2));
-  return store.providers.length;
+  store2.providers = providersFromList(simplify(providers2));
+  return store2.providers.length;
 };
 var compare = (url = "", endpoint = "", schemes = []) => {
   if (!schemes.length) {
@@ -2214,5 +2222,6 @@ export {
   extract,
   find as findProvider,
   has as hasProvider,
+  setFacebookCredentials,
   set as setProviderList
 };
