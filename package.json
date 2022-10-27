@@ -1,11 +1,11 @@
 {
-  "version": "3.1.3",
-  "name": "oembed-parser",
+  "version": "3.1.3-custom",
+  "name": "@front-stream/oembed-parser",
   "description": "Get oEmbed data from given URL.",
   "homepage": "https://www.npmjs.com/package/oembed-parser",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ndaidong/oembed-parser.git"
+    "url": "git@github.com:front-stream/oembed-parser.git"
   },
   "author": "@ndaidong",
   "main": "./src/main.js",
@@ -13,12 +13,6 @@
   "exports": {
     "import": "./src/main.js",
     "require": "./dist/cjs/oembed-parser.js"
-  },
-  "imports": {
-    "cross-fetch": "./src/deno/cross-fetch.js"
-  },
-  "browser": {
-    "cross-fetch": "./src/deno/cross-fetch.js"
   },
   "types": "./index.d.ts",
   "engines": {
